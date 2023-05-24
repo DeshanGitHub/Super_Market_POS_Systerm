@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="731.0" prefWidth="814.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CashierOrderDetailsFormController">
+   <children>
+      <Label layoutX="13.0" layoutY="12.0" text="Order List">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <Separator layoutX="136.0" layoutY="32.0" prefHeight="2.0" prefWidth="670.0" />
+      <TableView fx:id="tblOrderList" layoutY="130.0" prefHeight="632.0" prefWidth="814.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="colOrderId" prefWidth="75.0" text="Order Id" />
+          <TableColumn fx:id="colOrderDate" prefWidth="137.0" text="Date" />
+            <TableColumn fx:id="colOrderTime" prefWidth="121.0" text="Time" />
+            <TableColumn fx:id="colCustomerId" prefWidth="143.0" text="Customer ID" />
+            <TableColumn fx:id="colItems" prefWidth="233.0" text="Items" />
+            <TableColumn fx:id="colAmount" prefWidth="104.0" text="Amount" />
+        </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" layoutX="710.0" layoutY="46.0" prefHeight="36.0" prefWidth="96.0" style="-fx-background-color: #2ed573;" text="Search">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXTextField layoutX="471.0" layoutY="50.0" prefHeight="31.0" prefWidth="218.0" promptText="Enter Order ID" />
+      <JFXButton buttonType="RAISED" layoutX="396.0" layoutY="50.0" prefHeight="31.0" prefWidth="59.0" style="-fx-background-color: black;" text=".">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="29.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-refresh-90.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

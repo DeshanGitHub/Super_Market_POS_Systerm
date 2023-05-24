@@ -1,0 +1,105 @@
+DROP DATABASE IF EXISTS SuperMarket;
+CREATE DATABASE IF NOT EXISTS SuperMarket;
+SHOW DATABASES;
+USE SuperMarket;
+
+=========================================
+
+DROP TABLE IF EXISTS Customer;
+CREATE TABLE IF NOT EXISTS Customer(
+
+	custId VARCHAR(6),
+	custName VARCHAR(30) NOT NULL DEFAULT 'Unknown',
+	custAddress VARCHAR(30),
+	city VARCHAR(20),
+	province VARCHAR(20),
+	postalCode VARCHAR(9),
+	CONSTRAINT PRIMARY KEY(custId)
+
+);
+
+SHOW TABLES;
+DESCRIBE Customer;
+
+==============================================
+
+DROP TABLE IF EXISTS `Order`;
+CREATE TABLE IF NOT EXISTS `Order`(
+
+	orderId VARCHAR(6),
+	custId VARCHAR(6),
+	orderDate VARCHAR(15),	
+	orderTime VARCHAR(15),
+	orderCost DOUBLE,
+	CONSTRAINT PRIMARY KEY(orderId),
+	CONSTRAINT FOREIGN KEY(custId) REFERENCES Customer (custId) ON DELETE CASCADE ON UPDATE CASCADE
+
+);
+
+SHOW TABLES;
+DESCRIBE `Order`;
+
+================================================
+
+DROP TABLE IF EXISTS Item;
+CREATE TABLE IF NOT EXISTS Item(
+
+	itemCode VARCHAR(6),
+	itemName VARCHAR(30) NOT NULL DEFAULT 'Unknown',
+	itemDescription VARCHAR(50),
+	itemPackSize VARCHAR(20),
+	qtyOnHand INT(5) DEFAULT 0,
+	buyingPrice DOUBLE DEFAULT 0.00,
+	sellingPrice DOUBLE DEFAULT 0.00,
+	CONSTRAINT PRIMARY KEY(itemCode)
+
+);
+
+SHOW TABLES;
+DESCRIBE Item;
+
+==========================================================
+
+DROP TABLE IF EXISTS OrderDetail;
+CREATE TABLE IF NOT EXISTS OrderDetail(
+
+	orderId VARCHAR(6),
+	itemCode VARCHAR(6),
+	orderQTY INT(11),
+	discount DOUBLE DEFAULT 0.00,
+	price DOUBLE DEFAULT 0.00,
+	CONSTRAINT PRIMARY KEY(orderId, itemCode),
+	CONSTRAINT FOREIGN KEY(orderId) REFERENCES `Order`(orderId) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT FOREIGN KEY(itemCode) REFERENCES Item(itemCode) ON DELETE CASCADE ON UPDATE CASCADE
+
+);
+
+SHOW TABLES;
+DESCRIBE OrderDetail;
+
+==============================================================
+
+SELECT * FROM Customer;
+SELECT * FROM Item;
+
+===============================================================
+
+DROP TABLE IF EXISTS Discount;
+CREATE TABLE IF NOT EXISTS Discount(
+	discount DOUBLE DEFAULT 0.00
+);
+
+SHOW TABLES;
+DESCRIBE Discount;
+SELECT * FROM Discount;
+SELECT * FROM `Order`;
+DELETE FROM `Order`;
+SELECT * FROM OrderDetail;
+DELETE FROM OrderDetail;
+DELETE FROM Customer;
+DELETE FROM Item;
+===========================================================
+
+SELECT `Order`.orderId, Customer.custName, `Order`.orderDate FROM `Order` INNER JOIN Customer ON `Order`.custId=Customer.custId;
+
+SELECT orderdetail.orderId, orderdetail.itemCode, item.itemName, orderdetail.orderQTY, item.buyingPrice, item.sellingPrice FROM orderdetail INNER JOIN item ON orderdetail.itemCode=item.itemCode;

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="731.0" prefWidth="814.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminStockFormController">
+   <children>
+      <Text layoutX="24.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In Stock" AnchorPane.bottomAnchor="684.7255859375" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="690.83447265625" AnchorPane.topAnchor="13.0224609375">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Text>
+      <Separator layoutX="121.0" layoutY="32.0" prefHeight="3.0" prefWidth="679.0" />
+      <TableView fx:id="tblAdminStockTable" layoutX="14.0" layoutY="58.0" prefHeight="592.0" prefWidth="814.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <columns>
+            <TableColumn fx:id="colItemCount" prefWidth="39.0" text="No" />
+            <TableColumn fx:id="colItemCode" prefWidth="86.0" text="Item Code" />
+            <TableColumn fx:id="colItemName" prefWidth="119.0" text="Item Name" />
+            <TableColumn fx:id="colItemDescription" prefWidth="177.0" text="Description" />
+            <TableColumn fx:id="colItemPackSize" prefWidth="96.0" text="Pack Size" />
+            <TableColumn fx:id="colItemQuantity" prefWidth="72.0" text="Quantity" />
+            <TableColumn fx:id="colItemBuyingPrice" prefWidth="106.0" text="Buying Price" />
+            <TableColumn fx:id="colItemSellingPrice" prefWidth="118.0" text="Selling Price" />
+        </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" layoutX="641.0" layoutY="668.0" onAction="#removeItemOnAction" prefHeight="49.0" prefWidth="159.0" style="-fx-background-color: #ff4d4d;" text="Remove Item">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="544.0" layoutY="674.0" onAction="#refreshTableOnAction" prefHeight="38.0" prefWidth="85.0" style="-fx-background-color: black;" text=".">
+         <font>
+            <Font name="System Bold" size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-refresh-90.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>
